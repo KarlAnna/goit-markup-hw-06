@@ -195,7 +195,6 @@ hr {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     margin: -1px;
-    
 }
 
 .characteristics-icon-list {
@@ -361,6 +360,10 @@ hr {
     border-radius: 50%;
 
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.our-team-icon {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .our-team-link:hover, .our-team-link:focus {
@@ -554,9 +557,11 @@ footer {
 }
 
 .modal-close-icon {
+    position: absolute;
     width: 11px;
     height: 11px;
-    transform: translateX(1px);
+    top: 33%;
+    left: 33%;
 }
 
 .modal-title {
@@ -570,11 +575,12 @@ footer {
     margin-bottom: 12px;
 }
 
-.modal-form-field {
+.modal-form-list-item {
     margin-bottom: 10px;
+    position: relative;
 }
 
-.modal-form-field-lable {
+.modal-form-lable {
     display: block;
     color: var(--text-color);
     font-weight: 400;
@@ -584,27 +590,32 @@ footer {
     margin-bottom: 10px;
 }
 
-.modal-form-field-icon {
-    position: relative;
+.modal-form-input {
+    width: 100%;
+    padding: 10px 15px 10px 42px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-form-icon {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     left: 15px;
+
+    fill: black;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-form-field-input {
-    width: 100%;
-    padding: 10px 15px 10px 42px;
-    border: 1px solid rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
-}
-
-.modal-form-field-input:hover, .modal-form-field-input:hover .modal-form-icon{
-    fill: var(--accent-color);
+.modal-form-input:hover, .modal-form-input:focus, 
+.modal-form-textarea:hover, .modal-form-textarea:focus {
     border-color: var(--accent-color);
+}
+
+.modal-form-input:hover + .modal-form-icon, .modal-form-input:focus + .modal-form-icon, 
+.modal-form-icon:hover + .modal-form-input, .modal-form-icon:focus + .modal-form-input {
+    fill: var(--accent-color);
 }
 
 .modal-form-textarea {
@@ -615,42 +626,75 @@ footer {
     border-radius: 4px;
 
     padding: 12px 16px;
+    margin-bottom: 20px;
+
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-form-field-textarea::placeholder {
+.modal-form-textarea::placeholder {
     color: rgba(117, 117, 117, 0.5);
     font-size: 12px;
     line-height: 0.85;
     letter-spacing: 0.01em;
 }
 
-.modal-form-checkbox-field {
-    margin: 20px 0 30px 12px;
+.modal-form-field--chackbox {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
 }
 
-.modal-form-lable {
+.modal-form-checkbox-lable {
     color: var(--text-color);
     font-size: 14px;
     line-height: 0.55;
-    
-    margin-left: 8px;
+    letter-spacing: 0.03em;
 }
 
-.checkbox-label-link {
+.modal-form-checkbox-label-link {
     color: var(--accent-color);
 }
 
-.modal-form-checkbox {
-    background-color: var(--title-color);
+.modal-form-container--checkbox {
+    position: relative;
     width: 16px;
     height: 15px;
+    border: 2px solid var(--title-color);
+    border-radius: 2px;
+    box-shadow: 0px 0px 1.5px var(--title-color);
 
     float: left;
+    margin-left: 12px;
+    margin-top: 1px;
+
+    cursor: pointer;
 }
 
-.modal-form-btn-field {
+.modal-form-checkbox:checked + .modal-form-checkbox-icon {
+    opacity: 1;
+}
+
+.modal-form-checkbox-icon {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+
+    fill: white;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-container--btn {
     display: flex;
     justify-content: center;
+
+    margin-top: 30px;
 }
 
 .modal-form-btn {
